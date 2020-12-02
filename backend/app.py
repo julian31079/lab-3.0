@@ -7,7 +7,7 @@ app.config['MONGO_URI']='mongodb://localhost/laboratorio'
 CORS(app)
 mongo=PyMongo(app)
 dbUsers=mongo.db.users
-exp=StartExp()
+#exp=StartExp()
 @app.route('/')
 def index():
   return "Hello world!" 
@@ -18,13 +18,13 @@ def createUser():
 
 @app.route('/startExperiment',methods=['POST'])
 def startExperiment():
-  exp=StartExp('threadExp',request.json)
+
+  exp=StartExp('threadExp',request.json,mongo)
   exp.start()
-  exp.temperatureControl1()
-  return 'hi'
-@app.route('/getActualValues',methods=['GET'])
-def getActualValues():
-  return str(exp.temperatureControl1())
+  return jsonify({"msg":"Experiment running"})
+#@app.route('/getActualValues',methods=['GET'])
+#def getActualValues():
+  #return str(exp.temperatureControl1())
 
 if __name__ == "__main__":
     app.run(debug=True)
