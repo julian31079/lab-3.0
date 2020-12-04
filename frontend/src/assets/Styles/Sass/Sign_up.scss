@@ -67,7 +67,7 @@ $padding-vertical: 3em;
 }
 
 .aside__buttons button{
-    margin:5px;
+    margin:3em;
     font-size: 16px;
     border-radius: 10px;
     margin: 10px 0px;
@@ -85,9 +85,7 @@ $padding-vertical: 3em;
 }
 
 
-
-
-.login{
+.register{
     padding-top: $padding-vertical;
     margin-top: 6em;
     display: flex;
@@ -96,34 +94,40 @@ $padding-vertical: 3em;
     flex-direction: column;
     align-items: center;
 }
+.register figure{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
 
-.login__logoSabana{
+.register__logoSabana{
     width: 10em;
 }
 
-.login__container{
+.register__container{
     display: flex;
     flex-direction: column;
     justify-content:center;
     align-items: center;
 }
 
-.login__container--title{
+.register__container--title{
     color: $color-green;
     font-weight: bold;
     font-size: 3em;
 }
 
-.login__container--text{
+.register__container--text{
     color:$color-black;
 }
-.login__container--form{
+.register__container--form{
     display: flex;
     flex-direction: column;
     width: 30em;
 }
 
-.login__container--form input{
+.register__container--form input{
     margin:5px;
     font-size: 16px;
     border-radius: 10px;
@@ -135,18 +139,19 @@ $padding-vertical: 3em;
 ::placeholder{
     color: $color-black;
 }
-.login__container--form a{
+.register__container--form a{
     color: $color-black;
     font-size: 14px;
     text-decoration: none;
+    
 }
 
 
-.login__container--form a:hover{
+.register__container--form a:hover{
     color: $color-green;
 }
 
-.login__container--form button{
+.register__container--form button{
     margin:5px;
     font-size: 16px;
     border-radius: 10px;
@@ -156,4 +161,5 @@ $padding-vertical: 3em;
     font-weight: bold;
     background-color: $color-green;
     color: white;
+    
 }

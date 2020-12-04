@@ -60,7 +60,7 @@ body {
 }
 
 .aside__buttons button {
-  margin: 5px;
+  margin: 3em;
   font-size: 16px;
   border-radius: 10px;
   margin: 10px 0px;
@@ -78,7 +78,7 @@ body {
   justify-content: center;
 }
 
-.login {
+.register {
   padding-top: 3em;
   margin-top: 6em;
   display: flex;
@@ -88,34 +88,40 @@ body {
   align-items: center;
 }
 
-.login__logoSabana {
+.register figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.register__logoSabana {
   width: 10em;
 }
 
-.login__container {
+.register__container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.login__container--title {
+.register__container--title {
   color: #56A48D;
   font-weight: bold;
   font-size: 3em;
 }
 
-.login__container--text {
+.register__container--text {
   color: #51576C;
 }
 
-.login__container--form {
+.register__container--form {
   display: flex;
   flex-direction: column;
   width: 30em;
 }
 
-.login__container--form input {
+.register__container--form input {
   margin: 5px;
   font-size: 16px;
   border-radius: 10px;
@@ -129,17 +135,17 @@ body {
   color: #51576C;
 }
 
-.login__container--form a {
+.register__container--form a {
   color: #51576C;
   font-size: 14px;
   text-decoration: none;
 }
 
-.login__container--form a:hover {
+.register__container--form a:hover {
   color: #56A48D;
 }
 
-.login__container--form button {
+.register__container--form button {
   margin: 5px;
   font-size: 16px;
   border-radius: 10px;
@@ -151,4 +157,4 @@ body {
   color: white;
 }
 
-/*# sourceMappingURL=Login.css.map */
+/*# sourceMappingURL=Sign_up.css.map */
