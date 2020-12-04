@@ -2,6 +2,7 @@ from flask import Flask,jsonify
 from flask_pymongo import ObjectId,PyMongo,request
 from flask_cors import CORS
 from startExperiment import StartExp
+import threading
 app = Flask(__name__)
 app.config['MONGO_URI']='mongodb://localhost/laboratorio'
 CORS(app)
@@ -10,7 +11,7 @@ dbUsers=mongo.db.users
 #exp=StartExp()
 @app.route('/')
 def index():
-  return "Hello world!" 
+  return str(threading.active_count())
 @app.route('/createUser',methods=['POST'])
 def createUser():
     id= dbUsers.insert(request.json)
@@ -18,14 +19,20 @@ def createUser():
 
 @app.route('/startExperiment',methods=['POST'])
 def startExperiment():
-
-  exp=StartExp('threadExp',request.json,mongo)
-  exp.start()
-  return jsonify({"msg":"Experiment running"})
+  if(threading.active_count()<7):
+    exp=StartExp()
+    exp.initValues('threadExp',request.json,mongo)
+    exp.start() 
+    return jsonify({"msg":"Experiment running"})
+  else:
+    return jsonify({"msg":"Already an experiment running"})
 #@app.route('/getActualValues',methods=['GET'])
 #def getActualValues():
   #return str(exp.temperatureControl1())
-
+@app.route('/getActualValues',methods=['GET'])
+def getActualValues():
+  exp=StartExp()
+  return jsonify(exp.getActualValues())
 if __name__ == "__main__":
     app.run(debug=True)
     #app.debug=True
