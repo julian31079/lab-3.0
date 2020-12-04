@@ -19,9 +19,16 @@ class StartExp(threading.Thread):
         self.valueC1=0
         self.valueC2=0
         self.valueC3=0
+        self.valuepH1=0
+        self.valuepH2=0
+        self.valuepH3=0
+        self.valueoD1=0
+        self.valueoD2=0
+        self.valueoD3=0
         self.reg=mongo.db.reg
         self.exp=mongo.db.exp
         self.idExp=''
+        self.res=ord('R')
         threading.Thread.__init__(self,name=threadName,target=StartExp.run)
     def initValues(self):
         
@@ -70,12 +77,6 @@ class StartExp(threading.Thread):
             #self.oD3=oD()
             #self.pH3=pH(self.init['pH3'])
             self.t3=temp(self.init['temp3'])
-    def timeRemainig(self,timeS):
-        state=False
-        if(timeS<=self.time):
-            print('Time remaining: '+str(self.time-timeS))
-            state=True
-        return state
     def temperatureControl(self,cont):
         valCard=['AIN0','AIN1','AIN2']
         temp=0
@@ -117,18 +118,64 @@ class StartExp(threading.Thread):
             c=self.c3.calculateCells(self.ljm.readValue(valCard[cont]))
             #Controlling temp with fan.... etc below       
         return c
+    def pHControl(self,cont):
+        pH=0
+        if(cont==0):
+            self.ljm.initI2C(9,8,1)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            pH=self.ljm.readValueI2C()
+        if(cont==1):
+            self.ljm.initI2C(9,8,2)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            pH=self.ljm.readValueI2C()
+        if(cont==2):
+            self.ljm.initI2C(9,8,3)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            pH=self.ljm.readValueI2C()
+        return pH
+    def oDControl(self,cont):
+        od=0
+        if(cont==0):
+            self.ljm.initI2C(11,10,1)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            od=self.ljm.readValueI2C()
+        if(cont==1):
+            self.ljm.initI2C(11,10,2)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            od=self.ljm.readValueI2C()
+        if(cont==2):
+            self.ljm.initI2C(11,10,3)
+            self.ljm.sendValueI2C(self.res)
+            time.sleep(0.9)
+            od=self.ljm.readValueI2C()
+        return od
+    
+    def timeRemainig(self,timeS):
+        state=False
+        if(timeS<=self.time):
+            print('Time remaining: '+str(self.time-timeS))
+            state=True
+        return state
+
 
     def run(self):
         StartExp.initValues(self)
         momentTime=0
         dbTime=0
         while(StartExp.timeRemainig(self,momentTime)):
-            #Control the temperature of each FBR
+            ts=time.time()
             if(self.init['numFBR']==1):
                 self.valueT1=StartExp.temperatureControl(self,0)
                 self.valueL1=StartExp.irradianceControl(self,0)
                 self.valueL1=StartExp.irradianceControl(self,0)
                 self.valueC1=StartExp.cellsControl(self,0)
+                self.valuepH1=StartExp.pHControl(self,0)
+                self.valueoD1=StartExp.oDControl(self,0)
             if(self.init['numFBR']==2):
                 self.valueT1=StartExp.temperatureControl(self,0)
                 self.valueT2=StartExp.temperatureControl(self,1)
@@ -136,6 +183,10 @@ class StartExp(threading.Thread):
                 self.valueL2=StartExp.irradianceControl(self,1)
                 self.valueC1=StartExp.cellsControl(self,0)
                 self.valueC2=StartExp.cellsControl(self,1)
+                self.valuepH1=StartExp.pHControl(self,0)
+                self.valuepH2=StartExp.pHControl(self,1)
+                self.valueoD1=StartExp.oDControl(self,0)
+                self.valueoD2=StartExp.oDControl(self,1)
             if(self.init['numFBR']==3):
                 self.valueT1=StartExp.temperatureControl(self,0)
                 self.valueT2=StartExp.temperatureControl(self,1)
@@ -146,9 +197,15 @@ class StartExp(threading.Thread):
                 self.valueC1=StartExp.cellsControl(self,0)
                 self.valueC2=StartExp.cellsControl(self,1)
                 self.valueC3=StartExp.cellsControl(self,2)
-            time.sleep(1)
-            momentTime=momentTime+1
-            dbTime=dbTime+1
+                self.valuepH1=StartExp.pHControl(self,0)
+                self.valuepH2=StartExp.pHControl(self,1)
+                self.valuepH3=StartExp.pHControl(self,2)
+                self.valueoD1=StartExp.oDControl(self,0)
+                self.valueoD2=StartExp.oDControl(self,1)
+                self.valueoD3=StartExp.oDControl(self,2)
+            tf=time.time()
+            momentTime=momentTime+(tf-ts)
+            dbTime=dbTime+(tf-ts) 
             if(dbTime>=60):
                 expNow={"idReg":self.idExp,
                 "t1":self.valueT1,
@@ -160,10 +217,15 @@ class StartExp(threading.Thread):
                 "c1":self.valueC1,
                 "c2":self.valueC2,
                 "c3":self.valueC3,
+                "pH1":self.valuepH1,
+                "pH2":self.valuepH2,
+                "pH3":self.valuepH3,
+                "oD1":self.valueoD1,
+                "oD2":self.valueoD2,
+                "Od3":self.valueoD3,
                 }
                 self.exp.insert(expNow)
                 dbTime=0
-
                 #Write on db each minute
 
 
