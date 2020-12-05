@@ -26,9 +26,6 @@ def startExperiment():
     return jsonify({"msg":"Experiment running"})
   else:
     return jsonify({"msg":"Already an experiment running"})
-#@app.route('/getActualValues',methods=['GET'])
-#def getActualValues():
-  #return str(exp.temperatureControl1())
 @app.route('/getActualValues',methods=['GET'])
 def getActualValues():
   exp=StartExp()
