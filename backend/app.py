@@ -8,7 +8,6 @@ app.config['MONGO_URI']='mongodb://localhost/laboratorio'
 CORS(app)
 mongo=PyMongo(app)
 dbUsers=mongo.db.users
-#exp=StartExp()
 @app.route('/')
 def index():
   return str(threading.active_count())
@@ -16,6 +15,12 @@ def index():
 def createUser():
     id= dbUsers.insert(request.json)
     return jsonify({'msg':'user %s created'%{str(ObjectId(id))}})
+@app.route('/getUser',methods=['POST'])
+def getUser():
+  email=request.json['email']
+  password=request.json['password']
+  user=dbUsers.find_one({"email":email,"password":password})
+  return str(user)
 
 @app.route('/startExperiment',methods=['POST'])
 def startExperiment():

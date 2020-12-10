@@ -17,21 +17,24 @@ class StartExp(threading.Thread, metaclass=SingletonMeta):
     def initValues(self,threadName,init,mongo):
         self.init=init
         self.ljm=Ljm()
-        self.valueT1=0
-        self.valueT2=0
-        self.valueT3=0
-        self.valueL1=0
-        self.valueL2=0
-        self.valueL3=0
-        self.valueC1=0
-        self.valueC2=0
-        self.valueC3=0
-        self.valuepH1=0
-        self.valuepH2=0
-        self.valuepH3=0
-        self.valueoD1=0
-        self.valueoD2=0
-        self.valueoD3=0
+        self.valueT1=[]
+        self.valueT2=[]
+        self.valueT3=[]
+        self.valueL1=[]
+        self.valueL2=[]
+        self.valueL3=[]
+        self.valueLe1=[]
+        self.valueLe2=[]
+        self.valueLe3=[]
+        self.valueC1=[]
+        self.valueC2=[]
+        self.valueC3=[]
+        self.valuepH1=[]
+        self.valuepH2=[]
+        self.valuepH3=[]
+        self.valueoD1=[]
+        self.valueoD2=[]
+        self.valueoD3=[]
         self.reg=mongo.db.reg
         self.exp=mongo.db.exp
         self.idExp=''
@@ -187,75 +190,123 @@ class StartExp(threading.Thread, metaclass=SingletonMeta):
             self.ljm.readValueI2C()
             od=self.ljm.readValueI2C()
         return od
-    
+    def levelControl(self,cont):
+        valCard=['','','']
+        l=0
+        if(cont==0):
+            l=self.le1.calculateLevel(self.ljm.readValue(valCard[cont]))
+            #Controlling temp with fan.... etc below
+        if(cont==1):
+            l=self.le2.calculateLevel(self.ljm.readValue(valCard[cont]))
+            #Controlling temp with fan.... etc below
+        if(cont==2):
+            l=self.le3.calculateLevel(self.ljm.readValue(valCard[cont]))
+            #Controlling temp with fan.... etc below       
+        return l
     def timeRemainig(self,timeS):
         state=False
         if(timeS<=self.time):
             #print('Time remaining: '+str(self.time-timeS))
             state=True
         return state
-
-
+    def compRunning(self,value):
+        comp=True
+        if(value==-1):
+            comp=False
+        return comp
     def run(self):
         self.momentTime=0
         dbTime=0
         while(StartExp.timeRemainig(self,self.momentTime)):
             ts=time.time()
             if(self.init['numFBR']==1):
-                self.valueT1=StartExp.temperatureControl(self,0)
-                self.valueL1=StartExp.irradianceControl(self,0)
-                self.valueL1=StartExp.irradianceControl(self,0)
-                self.valueC1=StartExp.cellsControl(self,0)
-                self.valuepH1=StartExp.pHControl(self,0)
-                self.valueoD1=StartExp.oDControl(self,0)
+                self.valueT1.append((self.momentTime,StartExp.temperatureControl(self,0)))
+                self.valueL1.append((self.momentTime,StartExp.irradianceControl(self,0)))
+                #self.valueLe1.append((self.momentTime,StartExp.levelControl(self,0)))
+                self.valueC1.append((self.momentTime,StartExp.cellsControl(self,0)))
+                self.valuepH1.append((self.momentTime,StartExp.pHControl(self,0)))
+                self.valueoD1.append((self.momentTime,StartExp.oDControl(self,0)))
             if(self.init['numFBR']==2):
-                self.valueT1=StartExp.temperatureControl(self,0)
-                self.valueT2=StartExp.temperatureControl(self,1)
-                self.valueL1=StartExp.irradianceControl(self,0)
-                self.valueL2=StartExp.irradianceControl(self,1)
-                self.valueC1=StartExp.cellsControl(self,0)
-                self.valueC2=StartExp.cellsControl(self,1)
-                self.valuepH1=StartExp.pHControl(self,0)
-                self.valuepH2=StartExp.pHControl(self,1)
-                self.valueoD1=StartExp.oDControl(self,0)
-                self.valueoD2=StartExp.oDControl(self,1)
+                self.valueT1.append((self.momentTime,StartExp.temperatureControl(self,0)))
+                self.valueT2.append((self.momentTime,StartExp.temperatureControl(self,1)))
+                self.valueL1.append((self.momentTime,StartExp.irradianceControl(self,0)))
+                self.valueL2.append((self.momentTime,StartExp.irradianceControl(self,1)))
+                #self.valueLe1.append((self.momentTime,StartExp.levelControl(self,0)))
+                #self.valueLe2.append((self.momentTime,StartExp.levelControl(self,1)))
+                self.valueC1.append((self.momentTime,StartExp.cellsControl(self,0)))
+                self.valueC2.append((self.momentTime,StartExp.cellsControl(self,1)))
+                self.valuepH1.append((self.momentTime,StartExp.pHControl(self,0)))
+                self.valuepH2.append((self.momentTime,StartExp.pHControl(self,1)))
+                self.valueoD1.append((self.momentTime,StartExp.oDControl(self,0)))
+                self.valueoD2.append((self.momentTime,StartExp.oDControl(self,1)))
             if(self.init['numFBR']==3):
-                self.valueT1=StartExp.temperatureControl(self,0)
-                self.valueT2=StartExp.temperatureControl(self,1)
-                self.valueT3=StartExp.temperatureControl(self,2)
-                self.valueL1=StartExp.irradianceControl(self,0)
-                self.valueL2=StartExp.irradianceControl(self,1)
-                self.valueL3=StartExp.irradianceControl(self,2)
-                self.valueC1=StartExp.cellsControl(self,0)
-                self.valueC2=StartExp.cellsControl(self,1)
-                self.valueC3=StartExp.cellsControl(self,2)
-                self.valuepH1=StartExp.pHControl(self,0)
-                self.valuepH2=StartExp.pHControl(self,1)
-                self.valuepH3=StartExp.pHControl(self,2)
-                self.valueoD1=StartExp.oDControl(self,0)
-                self.valueoD2=StartExp.oDControl(self,1)
-                self.valueoD3=StartExp.oDControl(self,2)
+                self.valueT1.append((self.momentTime,StartExp.temperatureControl(self,0)))
+                self.valueT2.append((self.momentTime,StartExp.temperatureControl(self,1)))
+                self.valueT3.append((self.momentTime,StartExp.temperatureControl(self,2)))
+                self.valueL1.append((self.momentTime,StartExp.irradianceControl(self,0)))
+                self.valueL2.append((self.momentTime,StartExp.irradianceControl(self,1)))
+                self.valueL3.append((self.momentTime,StartExp.irradianceControl(self,2)))
+               # self.valueLe1.append((self.momentTime,StartExp.levelControl(self,0)))
+               # self.valueLe2.append((self.momentTime,StartExp.levelControl(self,1)))
+               # self.valueLe3.append((self.momentTime,StartExp.levelControl(self,2)))
+                self.valueC1.append((self.momentTime,StartExp.cellsControl(self,0)))
+                self.valueC2.append((self.momentTime,StartExp.cellsControl(self,1)))
+                self.valueC3.append((self.momentTime,StartExp.cellsControl(self,2)))
+                self.valuepH1.append((self.momentTime,StartExp.pHControl(self,0)))
+                self.valuepH2.append((self.momentTime,StartExp.pHControl(self,1)))
+                self.valuepH3.append((self.momentTime,StartExp.pHControl(self,2)))
+                self.valueoD1.append((self.momentTime,StartExp.oDControl(self,0)))
+                self.valueoD2.append((self.momentTime,StartExp.oDControl(self,1)))
+                self.valueoD3.append((self.momentTime,StartExp.oDControl(self,2)))
             tf=time.time()
             self.momentTime=self.momentTime+(tf-ts)
             dbTime=dbTime+(tf-ts) 
             if(dbTime>=60):
-                expNow={"idReg":self.idExp,
-                "t1":self.valueT1,
-                "t2":self.valueT2,
-                "t3":self.valueT3,
-                "l1":self.valueL1,
-                "l2":self.valueL2,
-                "l3":self.valueL3,
-                "c1":self.valueC1,
-                "c2":self.valueC2,
-                "c3":self.valueC3,
-                "pH1":self.valuepH1,
-                "pH2":self.valuepH2,
-                "pH3":self.valuepH3,
-                "oD1":self.valueoD1,
-                "oD2":self.valueoD2,
-                "oD3":self.valueoD3,
-                }
+                if(self.init['numFBR']==1):
+                    expNow={"idReg":self.idExp,
+                    "t1":self.valueT1[len(self.valueT1)-1][1],
+                    "l1":self.valueL1[len(self.valueL1)-1][1],
+                    #"le1":self.valueLe1[len(self.valueLe1)-1][1],
+                    "c1":self.valueC1[len(self.valueC1)-1][1],
+                    "pH1":self.valuepH1[len(self.valuepH1)-1][1],
+                    "oD1":self.valueoD1[len(self.valueoD1)-1][1],
+                    }
+                if(self.init['numFBR']==2):
+                    expNow={"idReg":self.idExp,
+                    "t1":self.valueT1[len(self.valueT1)-1][1],
+                    "t2":self.valueT2[(len(self.valueT2)-1)][1],
+                    "l1":self.valueL1[len(self.valueL1)-1][1],
+                    "l2":self.valueL2[len(self.valueL2)-1][1],
+                    #"le1":self.valueLe1[len(self.valueLe1)-1][1],
+                    #"le2":self.valueLe2[len(self.valueLe2)-1][1],
+                    "c1":self.valueC1[len(self.valueC1)-1][1],
+                    "c2":self.valueC2[len(self.valueC2)-1][1],
+                    "pH1":self.valuepH1[len(self.valuepH1)-1][1],
+                    "pH2":self.valuepH2[len(self.valuepH2)-1][1],
+                    "oD1":self.valueoD1[len(self.valueoD1)-1][1],
+                    "oD2":self.valueoD2[len(self.valueoD2)-1][1],
+                    }
+                if(self.init['numFBR']==3):
+                    expNow={"idReg":self.idExp,
+                    "t1":self.valueT1[len(self.valueT1)-1][1],
+                    "t2":self.valueT2[(len(self.valueT2)-1)][1],
+                    "t3":self.valueT3[(len(self.valueT3)-1)][1],
+                    "l1":self.valueL1[len(self.valueL1)-1][1],
+                    "l2":self.valueL2[len(self.valueL2)-1][1],
+                    "l3":self.valueL3[len(self.valueL3)-1][1],
+                    #"le1":self.valueLe1[len(self.valueLe1)-1][1],
+                    #"le2":self.valueLe2[len(self.valueLe2)-1][1],
+                    #"le3":self.valueLe3[len(self.valueLe3)-1][1],
+                    "c1":self.valueC1[len(self.valueC1)-1][1],
+                    "c2":self.valueC2[len(self.valueC2)-1][1],
+                    "c3":self.valueC3[len(self.valueC3)-1][1],
+                    "pH1":self.valuepH1[len(self.valuepH1)-1][1],
+                    "pH2":self.valuepH2[len(self.valuepH2)-1][1],
+                    "pH3":self.valuepH3[len(self.valuepH3)-1][1],
+                    "oD1":self.valueoD1[len(self.valueoD1)-1][1],
+                    "oD2":self.valueoD2[len(self.valueoD2)-1][1],
+                    "oD3":self.valueoD3[len(self.valueoD3)-1][1],
+                    }
                 self.exp.insert(expNow)
                 dbTime=0
                 #Write on db each minute
