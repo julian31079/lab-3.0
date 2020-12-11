@@ -39,4 +39,31 @@ class Ljm:
         if(resp==''):
             return 0
         return float(resp)
-        
+    def initUART(self,tx,rx):
+        ljm.eWriteName(self.handle,"ASYNCH_ENABLE",0)
+        ljm.eWriteName(self.handle, "ASYNCH_TX_DIONUM", tx)
+        ljm.eWriteName(self.handle, "ASYNCH_RX_DIONUM", rx)
+        ljm.eWriteName(self.handle, "ASYNCH_BAUD", 9600)
+        ljm.eWriteName(self.handle, "ASYNCH_RX_BUFFER_SIZE_BYTES", 10)
+        ljm.eWriteName(self.handle, "ASYNCH_NUM_DATA_BITS", 8)
+        ljm.eWriteName(self.handle, "ASYNCH_NUM_STOP_BITS", 1)
+        ljm.eWriteName(self.handle, "ASYNCH_PARITY", 0)
+        ljm.eWriteName(self.handle, "ASYNCH_ENABLE", 1)
+    def sendValueUART(self,data):
+        for i in data:
+            print(i)
+            ljm.eWriteName(self.handle,"ASYNCH_TX_GO", 0)
+            ljm.eWriteName(self.handle,"ASYNCH_NUM_BYTES_TX",1)
+            ljm.eWriteName(self.handle,"ASYNCH_DATA_TX",i)
+            ljm.eWriteName(self.handle,"ASYNCH_TX_GO", 1)
+    def readValueUART(self):
+        #Remember to put the time.sleep to call this method until the rx buffer is full
+        rxBytes=ljm.eReadName(self.handle,"ASYNCH_NUM_BYTES_RX")
+        data=[]
+        cont=0
+        if(rxBytes>0):
+            while cont<int(rxBytes):
+                bt=ljm.eReadName(self.handle,"ASYNCH_DATA_RX")
+                data.append(chr(int(bt)))
+                cont=cont+1
+        return data
