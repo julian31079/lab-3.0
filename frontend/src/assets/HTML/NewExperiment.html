@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Nuevo experimento</title>
+</head>
+<body>
+
+    <header class="header">
+        <figure class="header__figure">
+          <img src="/" alt="Logo" class="header__figure--logo" />
+        </figure>
+        <p class="header__title">Simocodal advance</p>
+        <div class="header__menu">
+          <img src="/user-icon" alt="User" class="header__menu--usricon" />
+          <p>perfil</p>
+          <ul>
+            <li><a href="">Cuenta</a></li>
+            <li><a href="">Configuración</a></li>
+            <li><a href="">Cerrar sesión</a></li>
+          </ul>
+        </div>
+      </header>
+
+    <section class="expphase">
+        <button class="expphase__cancel">Cancelar experimento</button>
+        <div class="phases">
+            <ul>
+                <li><a class="phases__enabled" href="http://">1</a></li>
+                <li><a class="phases__disabled" href="http://">2</a></li>
+                <li><a class="phases__disabled" href="http://">3</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="reactorNum">
+        <h1 class="reactorNum__title">Cantidad de fotobioreactores</h1>
+        <form action="">
+            <label for="">
+                <input type="radio" name="reactorNum" id="1" value="1">
+                <img src="" alt="1">
+            </label>
+            <label for="">
+                <input type="radio" name="reactorNum" id="2" value=2>
+                <img src="" alt="2">
+            </label>
+            <label for="">
+                <input type="radio" name="reactorNum" id="3" value="3">
+                <img src="" alt="3">
+            </label>
+        </form>
+    </section>
+
+    <section class="inputContainer">
+        <form action="" class="inputForm">
+            <input type="text" placeholder="Número de células objetivo">
+            <input type="text" placeholder="Duración del experimento">
+            <input type="text" placeholder="Tiempo de luz">
+            <input type="text" placeholder="Intensidad de la luz (irradiancia)">
+            <input type="text" placeholder="Temperatura">
+            <input type="text" placeholder="PH deseado">
+            <input type="text" placeholder="Volumen deseado (nivel del tanque)">
+            <!-- TODO Preguntar a Viyils si tasa de dilucion es igual que el volumen deseado -->
+            <!-- <input type="text" placeholder="Tasa de dilución"> -->
+            <!-- <input type="text" placeholder="Oxigeno disuelto"> -->
+            <button type="submit">Continuar</button>
+        </form>
+    </section>
+</body>
+</html>
