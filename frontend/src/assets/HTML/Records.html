@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Registro de experimentos</title>
+    <link rel="stylesheet" href="../Styles/CSS/Records.css">
   </head>
   <body>
     <header class="header">
       <figure class="header__figure">
-        <img src="/" alt="Logo" class="header__figure--logo" />
+        <img src="../static/logoFinal.svg" alt="Logo" class="header__figure--logo" />
       </figure>
       <p class="header__title">Simocodal advance</p>
       <div class="header__menu">
-        <img src="/user-icon" alt="User" class="header__menu--usricon" />
-        <p>perfil</p>
+        <img src="../static/user.svg" alt="User" class="header__menu--usricon" />
+        <p>Perfil</p>
         <ul>
           <li><a href="">Cuenta</a></li>
           <li><a href="">Configuración</a></li>
@@ -23,15 +24,15 @@
       </div>
     </header>
 
-    <section class="experiments">
-      <h1 class="experiments__header">Experimentos realizados</h1>
+    <section class="experiments container">
+      <h1 class="experiments__title">Experimentos realizados</h1>
       <table class="experiments__table">
         <thead class="experiments__table--head">
           <tr>
             <th>Experimento</th>
             <th>Fecha</th>
             <th>Duración del experimento</th>
-            <th>Resultado</th>
+            <th>Estado</th>
             <th>Resumen</th>
           </tr>
         </thead>
@@ -40,11 +41,11 @@
             <td>1</td>
             <td>10-Diciembre-2020</td>
             <td>24 horas</td>
-            <td>Exitoso</td>
+            <td>Finalizado</td>
             <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
           </tr>
    
-          <tr>
+          <tr class="active-row">
             <td>2</td>
             <td>09-Diciembre-2020</td>
             <td>12 horas</td>
@@ -53,19 +54,83 @@
           </tr>
 
           <tr>
-            <td>2</td>
+            <td>3</td>
             <td>05-Noviembre-2020</td>
             <td>48 horas</td>
-            <td>Fallido</td>
+            <td>Abortado</td>
             <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
           </tr>
+
+          
+          <tr>
+            <td>4</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>En proceso</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+
+          <tr>
+            <td>5</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+
+
+          <tr>
+            <td>6</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+
+          <tr>
+            <td>7</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+
+          <tr>
+            <td>8</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+
+          <tr>
+            <td>9</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
+          <tr>
+            <td>10</td>
+            <td>05-Noviembre-2020</td>
+            <td>48 horas</td>
+            <td>Finalizado</td>
+            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</td>
+          </tr>
+
         </tbody>
       </table>
     </section>
 
     
 
-    <section class="back">
+    <section class="back container">
         <button class="back__button">volver</button>
     </section>
   </body>
