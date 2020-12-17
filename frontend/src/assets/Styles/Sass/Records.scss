@@ -32,13 +32,13 @@ $color-white: #ffffff;
   margin: 5px;
   font-size: 16px;
   border-radius: 10px;
-  margin: 10px 0px;
-  padding: 2em;
+  margin: 10px 0;
+  padding: 1em;
   outline: none;
   background-color: $color-white;
   color: $color-green;
   font-weight: bold;
-  min-width: 50vw;
+  min-width: 20vw;
 }
 %flex {
   display: flex;
@@ -132,6 +132,27 @@ ul:hover {
 .header__menu li a:hover {
   text-decoration: underline;
 }
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.experiments__title {
+  color: $color-green;
+  font-size: 4em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0 10vw ;
+}
+.back__button {
+  @extend %button;
+}
+.blank{
+  padding: 1em;
+  margin: 0.5em;
+  min-width: 10vw;
+}
 
 .container {
   @extend %shadow;
@@ -142,9 +163,8 @@ ul:hover {
   margin: 0.5em;
   max-width: auto;
   max-height: auto;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
+  min-width: 10vw;
+  min-height: 8vh;
 }
 
 .experiments {
@@ -154,12 +174,7 @@ ul:hover {
   justify-content: flex-start;
 }
 
-.experiments__title {
-  color: $color-green;
-  font-size: 4em;
-  font-weight: normal;
-  margin: 0;
-}
+
 
 .experiments__table {
   border-collapse: collapse;
@@ -176,33 +191,23 @@ ul:hover {
   text-align: left;
   font-weight: bold;
 }
-
 .experiments__table th,
 .experiments__table td {
   padding: 12px 15px;
 }
-
 .experiments__table tbody tr {
   border-bottom: 1px solid $color-white;
   background-color: $color-white;
 }
-
 .experiments__table tbody tr:hover {
   outline: none;
   cursor: pointer;
   color: $color-green;
 }
-
-
-
 .experiments__table tbody tr:nth-of-type(even) {
   background-color: $color-background;
 }
 
 .experiments__table tbody tr:last-of-type {
   border-bottom: 2px solid $color-green;
-}
-
-.back__button {
-  @extend %button;
 }
