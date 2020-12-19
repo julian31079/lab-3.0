@@ -16,10 +16,10 @@ $color-white: #ffffff;
 }
 %container-pattern {
   background-color: $color-white;
-  background-image: radial-gradient($color-green 1px, transparent 1px),
-    radial-gradient($color-green 1px, $color-white 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
+  // background-image: radial-gradient($color-green 1px, transparent 1px),
+  //   radial-gradient($color-green 1px, $color-white 1px);
+  // background-size: 40px 40px;
+  // background-position: 0 0, 20px 20px;
 }
 %style-ulmenu {
   @extend %shadow;
