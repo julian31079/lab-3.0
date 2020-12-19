@@ -23,7 +23,7 @@ ul:hover, .header__menu ul {
   padding: 2em;
 }
 
-.containerBack__backButton, #endButtons button {
+.containerBack__backButton, #endButtons button, .updateParam {
   margin: 5px;
   font-size: 16px;
   border-radius: 10px;
@@ -154,32 +154,52 @@ ul:hover {
 
 #cont1 {
   grid-row: 2;
-  grid-column: 1/4;
+  grid-column: 1/6;
   display: grid;
+  align-items: center;
 }
 
-.input__title {
+.indicator__title {
   grid-row: 1/3;
+  margin-left: 1em;
+  font-size: 2em;
 }
 
 #luz {
   grid-row: 2;
+  overflow: hidden;
 }
 
 #irradiancia {
   grid-row: 2;
+  overflow: hidden;
 }
 
 #temperatura {
   grid-row: 2;
+  overflow: hidden;
 }
 
 #ph {
   grid-row: 2;
+  overflow: hidden;
 }
 
 #volumen {
   grid-row: 2;
+  overflow: hidden;
+}
+
+.indicator {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.indicator__value {
+  font-size: 2em;
+  margin: 0;
 }
 
 #cont2 {
@@ -187,19 +207,24 @@ ul:hover {
   grid-column: 1;
 }
 
-#cont3 {
-  grid-row: 3;
-  grid-column: 2;
+.updateParam {
+  background-color: #f4f8f7;
+  color: #51576c;
 }
 
-#cont4 {
+#cont3 {
   grid-row: 4;
   grid-column: 1;
 }
 
+#cont4 {
+  grid-row: 3/5;
+  grid-column: 2/6;
+}
+
 #endButtons {
   grid-row: 5;
-  grid-column: 1/3;
+  grid-column: 1/6;
   display: flex;
   justify-content: center;
 }
@@ -209,7 +234,7 @@ ul:hover {
   justify-content: space-around;
   align-items: center;
   grid-row: 1;
-  grid-column: 1/4;
+  grid-column: 1/6;
 }
 
 .main__title {
@@ -270,6 +295,30 @@ ul:hover {
 
 .tabla tbody tr:last-of-type {
   border-bottom: 2px solid #56a48d;
+}
+
+.selector {
+  padding: 8px;
+  color: #51576c;
+  background-color: #f4f8f7;
+  border: 1px solid #56a48d;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.selector:focus,
+.selector:hover {
+  outline: none;
+  border: 1px solid #51576c;
+  background-color: #ffffff;
+}
+
+.selector option {
+  background-color: #ffffff;
+}
+
+.selector option:active {
+  box-shadow: 0 0 10px 100px #56a48d inset;
 }
 
 /*# sourceMappingURL=RTExperiment.css.map */
