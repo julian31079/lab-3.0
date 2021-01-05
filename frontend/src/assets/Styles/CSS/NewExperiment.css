@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.container, .header__figure, header, .header__menu:hover ul,
+.header__figure, header, .form__container, .container, .header__menu:hover ul,
 #header__menu:hover, .header__menu ul {
   box-shadow: 2px 2px 2px 1px #51576c33;
 }
@@ -14,7 +14,7 @@ body {
   background-color: #f4f8f7;
 }
 
-.container {
+.form__container, .container {
   background-color: #ffffff;
 }
 
@@ -22,6 +22,30 @@ body {
 #header__menu:hover, .header__menu ul {
   border-radius: 0 0 0 1em;
   padding: 2em;
+}
+
+button {
+  margin: 5px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 1em;
+  outline: none;
+  background-color: #ffffff;
+  color: #56a48d;
+  font-weight: bold;
+  min-width: 20vw;
+}
+
+.form__container, .container {
+  background-color: #ffffff;
+  border-radius: 1em 1em 1em 1em;
+  padding: 1em;
+  margin: 0.5em;
+  max-width: auto;
+  max-height: auto;
+  min-width: 10vw;
+  min-height: 8vh;
 }
 
 body {
@@ -97,23 +121,6 @@ header {
   text-decoration: underline;
 }
 
-.wrapper {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.container {
-  background-color: #ffffff;
-  border-radius: 1em 1em 1em 1em;
-  padding: 1em;
-  margin: 0.5em;
-  max-width: auto;
-  max-height: auto;
-  min-width: 10vw;
-  min-height: 8vh;
-}
-
 @keyframes click-wave {
   0% {
     height: 40px;
@@ -142,7 +149,6 @@ header {
   left: 0;
   height: 40px;
   width: 40px;
-  transition: all 0.15s ease-out 0s;
   background: #cbd1d8;
   border: none;
   color: #fff;
@@ -193,8 +199,66 @@ header {
 }
 
 .reactorNum {
+  grid-row: 1;
+  grid-column: 50%;
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reactornum__options {
+  display: flex;
+  flex-direction: column;
+  min-width: 2em;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputForm {
+  display: grid;
+}
+
+.form__container {
+  color: #56a48d;
+  font-weight: bold;
+}
+
+.form__container > label {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__container > label > input {
+  border-radius: 5px;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.reactorNum {
+  grid-row: 1/4;
+  grid-column: 1;
+  min-width: 15vw;
+  display: flex;
+  justify-content: center;
+}
+
+.reactornum__title {
+  margin: 0;
+}
+
+.reactornum__options > label:hover {
+  cursor: pointer;
+  margin: 0;
+}
+
+.inputForm > button {
+  grid-row: 10;
+  grid-column: 1/5;
 }
 
 /*# sourceMappingURL=NewExperiment.css.map */
