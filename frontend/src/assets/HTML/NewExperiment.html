@@ -1,73 +1,142 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../Styles/CSS/NewExperiment.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../Styles/CSS/NewExperiment.css" />
     <title>Nuevo experimento</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header class="header">
-        <figure class="header__figure">
-          <img src="../static/logoFinal.svg" alt="Logo" class="header__figure--logo" />
-        </figure>
-        <p class="header__title">Simocodal advance</p>
-        <div class="header__menu">
-          <img src="../static/user.svg" alt="User" class="header__menu--usricon" />
-          <p>Perfil</p>
-          <ul id="header__menu">
-            <li><a href="">Cuenta</a></li>
-            <li><a href="">Configuración</a></li>
-            <li><a href="">Cerrar sesión</a></li>
-          </ul>
-        </div>
-      </header>
-
+      <figure class="header__figure">
+        <img
+          src="../static/logoFinal.svg"
+          alt="Logo"
+          class="header__figure--logo"
+        />
+      </figure>
+      <p class="header__title">Simocodal advance</p>
+      <div class="header__menu">
+        <img
+          src="../static/user.svg"
+          alt="User"
+          class="header__menu--usricon"
+        />
+        <p>Perfil</p>
+        <ul id="header__menu">
+          <li><a href="">Cuenta</a></li>
+          <li><a href="">Configuración</a></li>
+          <li><a href="">Cerrar sesión</a></li>
+        </ul>
+      </div>
+    </header>
     <section class="expphase container">
-        <button class="expphase__volver">Cancelar experimento</button>
-        <!-- <div class="phases">
-            <ul>
-                <li><a class="phases__enabled" href="http://">1</a></li>
-                <li><a class="phases__disabled" href="http://">2</a></li>
-                <li><a class="phases__disabled" href="http://">3</a></li>
-            </ul>
-        </div> -->
+      <button class="expphase__volver">Cancelar experimento</button>
+      <!-- <div class="phases">
+          <ul>
+              <li><a class="phases__enabled" href="http://">1</a></li>
+              <li><a class="phases__disabled" href="http://">2</a></li>
+              <li><a class="phases__disabled" href="http://">3</a></li>
+          </ul>
+      </div> -->
     </section>
-
-    <section class="reactorNum container">
-        <h1 class="reactorNum__title">Cantidad de fotobioreactores</h1>
-        <div>
+    <section class="inputContainer container">
+      <h2 class="inputContainer__title">Ingrese los valores iniciales</h2>
+      <form action="" class="inputForm">
+        <div class="reactorNum container">
+          <h1 class="reactorNum__title">Cantidad de fotobioreactores</h1>
+          <div class="reactornum__options">
             <label>
-              <input type="radio" class="option-input radio" name="example" checked />
-              Radio option
+              <input
+                type="radio"
+                class="option-input radio"
+                name="example"
+                checked
+              />
+              1 Fotobiorreactor
             </label>
             <label>
               <input type="radio" class="option-input radio" name="example" />
-              Radio option
+              2 Fotobiorreactores
             </label>
             <label>
               <input type="radio" class="option-input radio" name="example" />
-              Radio option
+              3 Fotobiorreactores
             </label>
           </div>
-    </section>
+        </div>
 
-    <section class="inputContainer container">
-        <form action="" class="inputForm">
-            <input type="text" placeholder="Número de células objetivo">
-            <input type="text" placeholder="Duración del experimento">
-            <input type="text" placeholder="Tiempo de luz">
-            <input type="text" placeholder="Intensidad de la luz (irradiancia)">
-            <input type="text" placeholder="Temperatura">
-            <input type="text" placeholder="PH deseado">
-            <input type="text" placeholder="Volumen deseado (nivel del tanque)">
-            <!-- TODO Preguntar a Viyils si tasa de dilucion es igual que el volumen deseado -->
-            <!-- <input type="text" placeholder="Tasa de dilución"> -->
-            <!-- <input type="text" placeholder="Oxigeno disuelto"> -->
-            <button type="submit">Continuar</button>
-        </form>
+        <div class="form__container">
+          <label for="i_numcel">
+            Número de células objetivo:
+            <input
+              type="number"
+              name="i_numcel"
+              placeholder="Número de células objetivo"
+            />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i_duracion">
+            Duración del experimento:
+            <input
+              type="number"
+              name="i_duracion"
+              placeholder="Duración del experimento"
+            />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i_luz">
+            Tiempo de luz:
+            <input type="number" name="i_luz" placeholder="Tiempo de luz" />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i__irradiancia">
+            Intensidad de la luz (irradiancia):
+            <input
+              type="number"
+              name="i_irradiancia"
+              placeholder="Intensidad de la luz (irradiancia)"
+            />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i_temp"
+            >Temperatura:
+            <input type="number" name="i_temp" placeholder="Temperatura" />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i_PH">
+            PH deseado:
+            <input type="number" name="i_PH" placeholder="PH deseado" />
+          </label>
+        </div>
+
+        <div class="form__container">
+          <label for="i_volumen">
+            Volumen deseado (nivel del tanque):
+            <input
+              type="number"
+              name="i_volumen"
+              placeholder="Volumen deseado (nivel del tanque)"
+            />
+          </label>
+        </div>
+
+        <!-- TODO Preguntar a Viyils si tasa de dilucion es igual que el volumen deseado -->
+        <!-- <input type="text" placeholder="Tasa de dilución"> -->
+        <!-- <input type="text" placeholder="Oxigeno disuelto"> -->
+        <button type="submit">Continuar</button>
+      </form>
     </section>
-</body>
+  </body>
 </html>
