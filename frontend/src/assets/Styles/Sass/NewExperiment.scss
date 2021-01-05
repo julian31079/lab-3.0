@@ -142,6 +142,9 @@ header {
 .header__menu li a:hover {
   text-decoration: underline;
 }
+.wrapper {
+  display: grid;
+}
 
 .container {
   @extend %containerBase;
@@ -230,7 +233,7 @@ header {
 .reactorNum {
   // padding-bottom: 1em;
   grid-row: 1;
-  grid-column: 50%;
+  grid-column: 1;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -240,7 +243,6 @@ header {
 .reactornum__options {
   display: flex;
   flex-direction: column;
-  min-width: 2em;
 }
 
 .inputContainer {
@@ -251,6 +253,7 @@ header {
 
 .inputForm {
   display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .form__container {
@@ -265,33 +268,17 @@ header {
 }
 
 .form__container > label > input {
-  border-radius: 5px;
+  padding: 20px;
+  border-radius: 1em;
   margin-top: 1em;
-  padding: 1em;
 }
 
 .reactorNum {
   grid-row: 1/4;
   grid-column: 1;
-  min-width: 15vw;
-  display: flex;
-  justify-content: center ;
 }
-
-.reactornum__title{
-  margin:0;
-}
-
-.reactornum__options > label:hover {
-  cursor: pointer;
-  margin:0;
-}
-
 .inputForm > button {
+  @extend %button;
   grid-row: 10;
   grid-column: 1/5;
-}
-
-button {
-  @extend %button;
 }

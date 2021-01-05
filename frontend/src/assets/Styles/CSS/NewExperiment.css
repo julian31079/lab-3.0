@@ -24,7 +24,11 @@ body {
   padding: 2em;
 }
 
+<<<<<<< HEAD
 button {
+=======
+.inputForm > button {
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
   margin: 5px;
   font-size: 16px;
   border-radius: 10px;
@@ -121,6 +125,13 @@ header {
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
+=======
+.wrapper {
+  display: grid;
+}
+
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
 @keyframes click-wave {
   0% {
     height: 40px;
@@ -200,7 +211,11 @@ header {
 
 .reactorNum {
   grid-row: 1;
+<<<<<<< HEAD
   grid-column: 50%;
+=======
+  grid-column: 1;
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -210,7 +225,10 @@ header {
 .reactornum__options {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   min-width: 2em;
+=======
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
 }
 
 .inputContainer {
@@ -221,6 +239,10 @@ header {
 
 .inputForm {
   display: grid;
+<<<<<<< HEAD
+=======
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
 }
 
 .form__container {
@@ -234,14 +256,21 @@ header {
 }
 
 .form__container > label > input {
+<<<<<<< HEAD
   border-radius: 5px;
   margin-top: 1em;
   padding: 1em;
+=======
+  padding: 20px;
+  border-radius: 1em;
+  margin-top: 1em;
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
 }
 
 .reactorNum {
   grid-row: 1/4;
   grid-column: 1;
+<<<<<<< HEAD
   min-width: 15vw;
   display: flex;
   justify-content: center;
@@ -254,6 +283,8 @@ header {
 .reactornum__options > label:hover {
   cursor: pointer;
   margin: 0;
+=======
+>>>>>>> 83068e5230bc567ec472b135c77ed8c472e040d3
 }
 
 .inputForm > button {
