@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Experimento</title>
+  <link rel="stylesheet" href="../Styles/CSS/RTExperiment.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js "></script>
+</head>
+
+
+<header class="header" ">
+      <figure class=" header__figure">
+  <img src="../static/logoFinal.svg" alt="Logo" class="header__figure--logo" />
+  </figure>
+  <p class="header__title">Simocodal advance</p>
+  <div class="header__menu">
+    <img src="../static/user.svg" alt="User" class="header__menu--usricon" />
+    <p>Perfil</p>
+    <ul>
+      <li><a href="">Cuenta</a></li>
+      <li><a href="">Configuración</a></li>
+      <li><a href="">Cerrar sesión</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrapper">
+  <section class="top container">
+    <button class="containerBack__backButton">Volver</button>
+    <h1 class="main__title">Experimento en tiempo real</h1>
+    <section class="container" id="timer">
+      <h3 class="container__timer--title subtitle">Tiempo transcurrido</h3>
+      <p class="container__timer indicator__value ">00:00:00</p>
+    </section>
+  </section>
+
+  <section class=" container" id="cont1">
+    <h2 class="indicator__title subtitle">Indicadores</h2>
+    <div class="indicator container" id="luz">
+      <h3 class="subtitle">Luz</h3>
+      <p class="indicator__value">30 LX</p>
+    </div>
+    <div class="indicator container" id="irradiancia">
+      <h3 class="subtitle">Irradiancia</h3>
+      <p class="indicator__value">320mm</p>
+    </div>
+    <div class="indicator container" id="temperatura">
+      <h3 class="subtitle">Temperatura</h3>
+      <p class="indicator__value">25 C</p>
+    </div>
+    <div class="indicator container" id="ph">
+      <h3 class="subtitle">PH</h3>
+      <p class="indicator__value">7 PH</p>
+    </div>
+    <div class="indicator container" id="volumen">
+      <h3 class="subtitle">Volumen</h3>
+      <p class="indicator__value">30 ml</p>
+    </div>
+  </section>
+
+  <section class="container" id="cont2">
+    <h2 class="outputs__title subtitle">Parámetros ingresados</h2>
+    <table class="outputs__table tabla">
+
+      <thead class="outputs__table--head">
+        <tr>
+          <th>Número de células objetivo</th>
+          <th>Duración del experimento</th>
+          <th>Tiempo de luz</th>
+          <th>Intensidad de la luz (irradiancia)</th>
+          <th>Temperatura</th>
+          <th>PH deseado</th>
+          <th>Volumen deseado (nivel del tanque)</th>
+        </tr>
+      </thead>
+      <tbody class="outputs__table--body">
+        <tr>
+          <td>1</td>
+          <td>24 horas</td>
+          <td>10 unidades</td>
+          <td>0.5 unidades</td>
+          <td>50 C</td>
+          <td>100 unidades</td>
+          <td>100 ml</td>
+        </tr>
+
+      </tbody>
+    </table>
+    <button class="updateParam">Actualizar parametros</button>
+
+  </section>
+
+  <section class="container" id="cont3">
+    <h2 class="tableVontainer__title subtitle">Valores registrados</h2>
+
+    <table class="outputs__table tabla">
+      <thead class="outputs__table--head">
+        <tr>
+          <th>Tiempo</th>
+          <th>Número de células objetivo</th>
+          <th>Duración del experimento</th>
+          <th>Tiempo de luz</th>
+          <th>Intensidad de la luz (irradiancia)</th>
+          <th>Temperatura</th>
+          <th>PH deseado</th>
+          <th>Volumen deseado (nivel del tanque)</th>
+        </tr>
+      </thead>
+      <tbody class="outputs__table--body">
+        <tr>
+          <td>05 días 15:42 horas</td>
+          <td>1</td>
+          <td>10 unidades</td>
+          <td>0.5 unidades</td>
+          <td>50 C</td>
+          <td>100 unidades</td>
+          <td>100 ml</td>
+          <td>100 ml</td>
+        </tr>
+        <tr>
+          <td>01 día 05:42 horas</td>
+          <td>1</td>
+          <td>10 unidades</td>
+          <td>0.5 unidades</td>
+          <td>50 C</td>
+          <td>100 unidades</td>
+          <td>100 ml</td>
+          <td>100 ml</td>
+        </tr>
+        <tr>
+          <td>2:30 horas</td>
+          <td>1</td>
+          <td>10 unidades</td>
+          <td>0.5 unidades</td>
+          <td>50 C</td>
+          <td>100 unidades</td>
+          <td>100 ml</td>
+          <td>100 ml</td>
+        </tr>
+        <tr>
+          <td>10:00 min</td>
+          <td>1</td>
+          <td>10 unidades</td>
+          <td>0.5 unidades</td>
+          <td>50 C</td>
+          <td>100 unidades</td>
+          <td>100 ml</td>
+          <td>100 ml</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="container" id="cont4">
+    <h2 class="subtitle">Gráfica</h2>
+    <select class="selector" name="select">
+      <option value="value1">Todo</option>
+      <option value="value1">PH</option>
+      <option value="value2">Luz</option>
+      <option value="value3">Temperatura</option>
+    </select>
+    <canvas id="MiGrafica" width="100" height="100"></canvas>
+  </section>
+
+  <section class="container" id="endButtons">
+    <button>Abortar</button>
+    <button disabled="disabled">Finalizar</button>
+  </section>
+
+</div class="">
+</body>
+
+<script>
+
+  let micanvas = document.getElementById("MiGrafica").getContext("2d");
+
+  var chart = new Chart(micanvas, {
+    type: "pie",
+    data: {
+      labels: ["Tiempo 1", "Tiempo 2", "Tiempo 3", "Tiempo 4", "Tiempo 5", "Tiempo 6", "Tiempo 7", "Tiempo 8", "Tiempo 9", "Tiempo 10", "Tiempo 11", "Tiempo 12", "Tiempo 13", "Tiempo 14", "Tiempo 15", "Tiempo 4"],
+      datasets: [
+        {
+          label: " Num datos",
+          data: [10, 9, 15, 2, 9, 15, 2, 9, 15, 2, 9, 15, 2, 9, 15, 2],
+        },
+      ],
+    },
+  });
+</script>
+
+</html>
