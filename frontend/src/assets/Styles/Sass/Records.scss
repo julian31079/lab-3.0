@@ -1,0 +1,144 @@
+@import './General.scss';
+
+
+$header-height: 100px;
+header {
+  @extend %shadow;
+  @extend %header-pattern;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $color-white;
+  height: $header-height;
+}
+.header__figure {
+  @extend %shadow;
+  padding: 0;
+  background-color: $color-background;
+  border-radius: 1em 1em 1em 1em;
+  //   margin: 0;
+}
+.header__figure--logo {
+  margin: 0;
+  max-height: $header-height;
+  filter: invert(75%);
+}
+.header__title {
+  font-weight: lighter;
+  font-size: 3em;
+  margin: 0;
+}
+.header__menu {
+  margin: 4em;
+  cursor: pointer;
+}
+.header__menu--usricon {
+  max-width: 3em;
+  margin-right: 8px;
+}
+.header__menu ul {
+  @extend %style-ulmenu;
+  display: none;
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  width: auto;
+  text-align: right;
+  margin: 0 0 0 -9vw;
+}
+.header__menu:hover ul,
+ul:hover {
+  @extend %style-ulmenu;
+  display: block;
+}
+.header__menu li {
+  margin: 1em;
+  align-items: flex-start;
+}
+.header__menu li a {
+  color: white;
+  // color: $color-black;
+  text-decoration: none;
+  font-size: 2em;
+}
+.header__menu li a:hover {
+  text-decoration: underline;
+}
+.wrapper{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.experiments__title {
+  color: $color-green;
+  font-size: 4em;
+  font-weight: normal;
+  margin: 0;
+  padding: 0 10vw ;
+}
+
+.back__button {
+  @extend %button;
+}
+.blank{
+  padding: 1em;
+  margin: 0.5em;
+  min-width: 10vw;
+}
+
+.container {
+  @extend %shadow;
+  @extend %container-pattern;
+  background-color: $color-white;
+  border-radius: 1em 1em 1em 1em;
+  padding: 1em;
+  margin: 0.5em;
+  max-width: auto;
+  max-height: auto;
+  min-width: 10vw;
+  min-height: 8vh;
+}
+
+.experiments {
+  @extend %flex;
+  min-height: 40vh;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.experiments__table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 90vw;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px #51576c4d;
+}
+.experiments__table thead tr {
+  background-color: $color-green;
+  color: $color-white;
+  text-align: left;
+  font-weight: bold;
+}
+.experiments__table th,
+.experiments__table td {
+  padding: 12px 15px;
+}
+.experiments__table tbody tr {
+  border-bottom: 1px solid $color-white;
+  background-color: $color-white;
+}
+.experiments__table tbody tr:hover {
+  outline: none;
+  cursor: pointer;
+  color: $color-green;
+}
+.experiments__table tbody tr:nth-of-type(even) {
+  background-color: $color-background;
+}
+
+.experiments__table tbody tr:last-of-type {
+  border-bottom: 2px solid $color-green;
+}
