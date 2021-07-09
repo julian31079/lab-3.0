@@ -1,8 +1,8 @@
 class Runge:
     def __init__(self,y=0,ys=0,z1=0,z2=0,z3=0,
                 h=1,it=10,
-                l0=0,l1=0,l2=0,l3=0,
-                ysList=[],z1List=[],z2List=[],z3List=[]):
+                l0=1,l1=1,l2=1,l3=1,
+                ysList=[1],z1List=[],z2List=[],z3List=[]):
         self.y=y
         self.ys=ys
         self.z1=z1
@@ -18,9 +18,31 @@ class Runge:
         self.z1List=z1List
         self.z2List=z2List
         self.z3List=z3List
-
+    def fys(self,y,i):
+        value=self.z1List[i]+self.l3*(y-self.ysList[i])
+        self.ysList.append(value)
+        return value
+    def fz1(self,y,i):
+        value=self.z2List[i]+self.l2*(y-self.ysList[i])
+        self.z1List.append(value)
+        return value
+    def fz2(self,y,i):
+        value=self.z3List[i]+self.l1*(y-self.ysList[i])
+        self.z2List.append(value)
+        return value
+    def fz3(self,y,i):
+        value=self.l0*(y-self.ysList[i])
+        self.z3List.append(value)
+        return value
     def pruebas(self):
+        rand=[i for i in range(0,self.it)] 
         for i in range(0,self.it):
-            pass
+            self.fz3(rand[i],i)
+            self.fz2(rand[i],i)
+            self.fz1(rand[i],i)
+            self.fys(rand[i],i)
+        print(self.ysList)
+        
 rg=Runge()
+rg.pruebas()
 
