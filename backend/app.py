@@ -1,7 +1,7 @@
 from flask import Flask,jsonify
 from flask_pymongo import ObjectId,PyMongo,request
 from flask_cors import CORS
-from startExperiment import StartExp
+#from startExperiment import StartExp
 import threading
 app = Flask(__name__)
 app.config['MONGO_URI']='mongodb://localhost/laboratorio'
@@ -21,8 +21,9 @@ def getUser():
   password=request.json['password']
   user=dbUsers.find_one({"email":email,"password":password})
   return str(user)
-
+""""
 @app.route('/startExperiment',methods=['POST'])
+
 def startExperiment():
   if(threading.active_count()<7):
     exp=StartExp()
@@ -34,7 +35,7 @@ def startExperiment():
 @app.route('/getActualValues',methods=['GET'])
 def getActualValues():
   exp=StartExp()
-  return jsonify(exp.getActualValues())
+  return jsonify(exp.getActualValues())"""""
 if __name__ == "__main__":
     app.run(debug=True)
     #app.debug=True
